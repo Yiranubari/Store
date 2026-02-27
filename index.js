@@ -9,10 +9,12 @@ const server = http.createServer((req, res) => {
   const pathName = url.parse(req.url, true).pathname;
   const query = url.parse(req.url, true).query;
 
+  console.log(url.parse(req.url, true));
+
   if (pathName === "/products" || pathName === "/") {
     res.writeHead(200, { "Content-type": "text/html" });
     res.end("this is the products page");
-  } else if (pathName === "/laptop") {
+  } else if (pathName === "/laptop" && query.id < laptopData.length) {
     res.writeHead(200, { "Content-type": "text/html" });
     res.end("this is the laptop page");
   } else {
