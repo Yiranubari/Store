@@ -4,7 +4,7 @@ const json = fs.readFileSync(`${__dirname}/data/data.json`, "utf-8");
 const laptopData = JSON.parse(json);
 
 const server = http.createServer((req, res) => {
-  console.log("someone has made a request from the browser");
+  res.end("This is the response from the server");
 });
 
 server.listen(1337, "127.0.0.1", () => {
