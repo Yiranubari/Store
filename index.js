@@ -6,8 +6,8 @@ const json = fs.readFileSync(`${__dirname}/data/data.json`, "utf-8");
 const laptopData = JSON.parse(json);
 
 const server = http.createServer((req, res) => {
-  const query = url.parse(req.url, true);
-  console.log(query);
+  const pathName = url.parse(req.url, true).pathname;
+  console.log(pathName);
 
   res.writeHead(200, { "Content-type": "text/html" });
   res.end("This is the response from the server");
