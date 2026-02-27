@@ -7,6 +7,7 @@ const laptopData = JSON.parse(json);
 
 const server = http.createServer((req, res) => {
   const pathName = url.parse(req.url, true).pathname;
+  const query = url.parse(req.url, true).query;
 
   if (pathName === "/products" || pathName === "/") {
     res.writeHead(200, { "Content-type": "text/html" });
