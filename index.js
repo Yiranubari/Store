@@ -21,20 +21,15 @@ const server = http.createServer((req, res) => {
       `${__dirname}/templates/template-laptop.html`,
       "utf-8",
       (err, data) => {
-        let output = data.replace(
-          "{%PRODUCTNAME%}",
-          laptopData[query.id].productName,
-        );
-        output = output.replace("{%PRICE%}", laptopData[query.id].price);
-        output = output.replace("{%IMAGE%}", laptopData[query.id].image);
-        output = output.replace("{%SCREEN%}", laptopData[query.id].screen);
-        output = output.replace("{%CPU%}", laptopData[query.id].cpu);
-        output = output.replace("{%STORAGE%}", laptopData[query.id].storage);
-        output = output.replace("{%RAM%}", laptopData[query.id].ram);
-        output = output.replace(
-          "{%DESCRIPTION%}",
-          laptopData[query.id].description,
-        );
+        const laptop = laptopData[query.id];
+        let output = data.replace("{%PRODUCTNAME%}", laptop.productName);
+        output = output.replace("{%PRICE%}", laptop.price);
+        output = output.replace("{%IMAGE%}", laptop.image);
+        output = output.replace("{%SCREEN%}", laptop.screen);
+        output = output.replace("{%CPU%}", laptop.cpu);
+        output = output.replace("{%STORAGE%}", laptop.storage);
+        output = output.replace("{%RAM%}", laptop.ram);
+        output = output.replace("{%DESCRIPTION%}", laptop.description);
 
         res.end(output);
       },
