@@ -20,12 +20,13 @@ const server = http.createServer((req, res) => {
       `${__dirname}/templates/template-overview.html`,
       'utf-8',
       (err, data) => {
-        res.end(data);
-
         fs.readFile(
           `${__dirname}/templates/template-card.html`,
           'utf-8',
           (err, data) => {
+            const cardsOutput = laptopData.map((el) =>
+              replaceTemplate(data, el)
+            );
             res.end(data);
           }
         );
