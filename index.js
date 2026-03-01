@@ -38,9 +38,18 @@ const server = http.createServer((req, res) => {
     // LAPTOP DETAIL
   } else if (pathName === '/laptop' && query.id < laptopData.length) {
     res.writeHead(200, { 'Content-type': 'text/html' });
+  }
 
-    // NOT FOUND
-  } else {
+  // IMAGES
+  else if (/\.(jpg|jpeg|png|gif)$/i.test(pathName)) {
+    fs.readFile(`${__dirname}/data/img${pathName}`, (err, data) => {
+      res.writeHead(200, { 'Content-type': 'image/jpeg' });
+      res.end(data);
+    });
+  }
+
+  // NOT FOUND
+  else {
     res.writeHead(404, { 'Content-type': 'text/html' });
     res.end('page not found');
   }
