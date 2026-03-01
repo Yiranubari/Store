@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
       'utf-8',
       (err, data) => {
         const laptop = laptopData[query.id];
-
+        const output = replaceTemplate(data, laptop);
         res.end(output);
       }
     );
