@@ -9,11 +9,15 @@ const server = http.createServer((req, res) => {
   const pathName = url.parse(req.url, true).pathname;
   const query = url.parse(req.url, true).query;
 
+  // PRODUCTS OVERVIEW
+
   console.log(url.parse(req.url, true));
 
   if (pathName === '/products' || pathName === '/') {
     res.writeHead(200, { 'Content-type': 'text/html' });
     res.end('this is the products page');
+
+    // LAPTOP DETAIL
   } else if (pathName === '/laptop' && query.id < laptopData.length) {
     res.writeHead(200, { 'Content-type': 'text/html' });
 
@@ -26,6 +30,8 @@ const server = http.createServer((req, res) => {
         res.end(output);
       }
     );
+
+    // NOT FOUND
   } else {
     res.writeHead(404, { 'Content-type': 'text/html' });
     res.end('page not found');
