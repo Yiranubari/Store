@@ -34,10 +34,21 @@ const server = http.createServer((req, res) => {
         );
       }
     );
+  }
 
-    // LAPTOP DETAIL
-  } else if (pathName === '/laptop' && query.id < laptopData.length) {
+  // LAPTOP DETAIL
+  else if (pathName === '/laptop' && query.id < laptopData.length) {
     res.writeHead(200, { 'Content-type': 'text/html' });
+
+    fs.readFile(
+      `${__dirname}/templates/template-laptop.html`,
+      'utf-8',
+      (err, data) => {
+        const laptop = laptopData[query.id];
+        const output = replaceTemplate(data, laptop);
+        res.end(output);
+      }
+    );
   }
 
   // IMAGES
