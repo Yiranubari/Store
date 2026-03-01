@@ -15,7 +15,6 @@ const server = http.createServer((req, res) => {
 
   if (pathName === '/products' || pathName === '/') {
     res.writeHead(200, { 'Content-type': 'text/html' });
-    res.end('this is the products page');
 
     fs.readFile(
       `${__dirname}/templates/template-overview.html`,
