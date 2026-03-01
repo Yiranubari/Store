@@ -21,6 +21,14 @@ const server = http.createServer((req, res) => {
       'utf-8',
       (err, data) => {
         res.end(data);
+
+        fs.readFile(
+          `${__dirname}/templates/template-card.html`,
+          'utf-8',
+          (err, data) => {
+            res.end(data);
+          }
+        );
       }
     );
 
