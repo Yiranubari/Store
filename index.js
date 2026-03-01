@@ -21,7 +21,7 @@ const server = http.createServer((req, res) => {
       `${__dirname}/templates/template-overview.html`,
       'utf-8',
       (err, data) => {
-        res.end(output);
+        res.end(data);
       }
     );
 
