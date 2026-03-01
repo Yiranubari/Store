@@ -17,19 +17,17 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-type': 'text/html' });
     res.end('this is the products page');
 
-    // LAPTOP DETAIL
-  } else if (pathName === '/laptop' && query.id < laptopData.length) {
-    res.writeHead(200, { 'Content-type': 'text/html' });
-
     fs.readFile(
-      `${__dirname}/templates/template-laptop.html`,
+      `${__dirname}/templates/template-overview.html`,
       'utf-8',
       (err, data) => {
-        const laptop = laptopData[query.id];
-        const output = replaceTemplate(data, laptop);
         res.end(output);
       }
     );
+
+    // LAPTOP DETAIL
+  } else if (pathName === '/laptop' && query.id < laptopData.length) {
+    res.writeHead(200, { 'Content-type': 'text/html' });
 
     // NOT FOUND
   } else {
